@@ -1,0 +1,40 @@
+.card {
+    cursor: pointer;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease, background 0.3s ease;
+    color: #324d67;
+    border-radius: 10px;
+    background-color: rgb(246, 235, 214);
+    position: relative;
+}
+
+.card div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.card:hover {
+    transform: scale(1.1, 1.1);
+    background: #ffa45c;
+    opacity: 50;
+}
+
+.image {
+    border-radius: 15px;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease;
+}
+
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    color: #131415;
+}
+
+.price {
+    font-weight: 800;
+    color: black;
+}
