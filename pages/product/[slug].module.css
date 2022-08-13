@@ -196,4 +196,8 @@
     .track {
         width: 550%;
     }
+    .quantityDesc span {
+        font-size: 22px;
+        padding:2px 12px;
+    }
 }

@@ -19,6 +19,7 @@
 .closeBtn {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
@@ -98,9 +99,6 @@
     .mainContainer {
         width: 415px;
         padding: 4px;
-    }
-    .heading {
-        margin-top: 35px;
     }
 
     .itemContainer {

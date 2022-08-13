@@ -83,10 +83,16 @@
         gap: 10px;
     }
 
-    .quantityDesc {
-        padding: 0;
+    .quantityDesc span {
+        padding: 5px 9px;
     }
     .bottom {
         margin-top: 30px;
+    }
+}
+
+@media screen and (max-width:545px) {
+    .num{
+        font-size: 2px;
     }
 }
