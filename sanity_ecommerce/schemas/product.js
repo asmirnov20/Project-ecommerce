@@ -21,6 +21,7 @@ export default {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
+            // автоматически генерирует slug на основе name
             options: {
                 source: 'name',
                 maxLength: 90,

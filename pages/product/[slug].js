@@ -87,7 +87,9 @@ const ProductDetails = ({ products, product }) => {
 }
 
 export const getStaticProps = async ({ params: { slug } }) => {
+    // получаем детали о продукте со страницы, на которой мы находимся
     const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
+    // получаем похожие продукты
     const productsQuery = '*[_type=="product"]'
 
     const product = await client.fetch(query)
@@ -99,6 +101,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 }
 
 export const getStaticPaths = async () => {
+    // получаем свойство current у slug
     const query = `*[_type == 'product'] {
         slug{
             current

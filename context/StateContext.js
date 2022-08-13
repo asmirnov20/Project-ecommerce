@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+// pop-up уведомление после добавления продукта
 import { toast } from 'react-hot-toast'
 
 const Context = createContext()
@@ -16,6 +17,7 @@ export const StateContext = ({ children }) => {
         setTotalPrice(prevTotalPrice => prevTotalPrice + product.price * quantity)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities + quantity)
 
+        // если продукт в корзине, то обновляем его количество
         if (isProductInCart) {
             const updatedCartItems = cartItems.map(cartProduct => {
                 if (cartProduct._id === product._id) return {
@@ -24,6 +26,7 @@ export const StateContext = ({ children }) => {
                 }
             })
             setCartItems(updatedCartItems)
+            // добавляем продукт с обновленным количеством
         } else {
             product.quantity = quantity;
             setCartItems([...cartItems, { ...product }])
@@ -52,7 +55,8 @@ export const StateContext = ({ children }) => {
                 qty,
                 increaseQty,
                 decreaseQty,
-                onAdd
+                onAdd,
+                setShowCart,
             }}
         >
             {children}
