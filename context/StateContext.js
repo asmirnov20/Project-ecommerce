@@ -77,7 +77,6 @@ export const StateContext = ({ children }) => {
         setTotalPrice(prevTotalPrice => prevTotalPrice - foundProduct.price * foundProduct.quantity)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity)
         setCartItems(newCartItems)
-
     }
 
     const increaseQty = () => {
@@ -104,6 +103,7 @@ export const StateContext = ({ children }) => {
                 onAdd,
                 setShowCart,
                 toggleCartItemQuantity,
+                onRemove
             }}
         >
             {children}

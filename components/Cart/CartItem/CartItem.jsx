@@ -5,18 +5,18 @@ import s from './CartItem.module.css'
 import { useStateContext } from '../../../context/StateContext'
 
 const CartItem = ({ item }) => {
-  const { toggleCartItemQuantity } = useStateContext()
+  const { toggleCartItemQuantity, onRemove } = useStateContext()
   return (
     <>
       <div className={s.product} key={item._id}>
         <img src={urlFor(item?.image[0])} alt='product' className={s.productImage} />
-        <div>
+        <div className={s.itemInfo}>
           <div className={`${s.flex} ${s.top}`}>
             <h5>{item.name}</h5>
             <button
               type='button'
               className={s.removeItem}
-              onClick=''
+              onClick={() => onRemove(item)}
             >
               <TiDeleteOutline />
             </button>

@@ -79,11 +79,13 @@
     bottom: 12px;
     right: 5px;
     width: 100%;
-    padding: 30px 65px;
+    margin: -20px -20px 0px 20px;
+    padding: 0px 65px;
 }
 .total {
     display: flex;
     justify-content: space-between;
+    margin-top:55px;
 }
 
 .total h3 {
@@ -123,7 +125,16 @@
 
 @media screen and (max-width:545px) {
     .mainContainer {
-        width: 350px;
+        width: 100%;
         margin-bottom: 10px;
     }
+.itemContainer {
+    padding: 0;
+}
+.bottom {
+    padding: -1px;
+}
+.product{
+    
+}
 }

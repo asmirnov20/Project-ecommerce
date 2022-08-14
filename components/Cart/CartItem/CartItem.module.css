@@ -59,14 +59,17 @@
 
 @media screen and (max-width:820px) {
     .product {
-        padding: 20px 5px;
+        padding: 20px 10px;
     }
     .productImage {
         width: 25%;
         height: 25%;
     }
     .flex {
-        width: 200px;
+        width: auto;
+    }
+     .itemInfo{
+        width: 100%;
     }
     .flex h5 {
         font-size: 16px;
@@ -95,4 +98,5 @@
     .num{
         font-size: 2px;
     }
+    
 }
