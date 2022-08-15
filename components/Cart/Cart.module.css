@@ -67,7 +67,16 @@
 .button:hover {
     transform: scale(1.1, 1.1);
 }
+.disabled {
+    background-color: #f02d34;
+    opacity: 0.5;
+    transform: none;
+}
 
+.disabled:hover {
+    transform: none;
+    cursor: default;
+}
 .itemContainer {
     margin-top: 15px;
     overflow: auto;
@@ -133,8 +142,5 @@
 }
 .bottom {
     padding: -1px;
-}
-.product{
-    
 }
 }

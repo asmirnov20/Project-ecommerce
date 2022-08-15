@@ -79,15 +79,16 @@ const Cart = () => {
           <div className={s.btnContainer}>
             <button
               type='button'
-              className={s.button}
-              onClick={handleCheckout}>
-              Pay with Stripe
-            </button>
-          </div>
+              disabled={cartItems.length === 0 ? true : false}
+              className={cartItems.length === 0 ? `${s.disabled} ${s.button}`: `${s.button} `}
+            onClick={handleCheckout}>
+            Pay with Stripe
+          </button>
         </div>
       </div>
-
     </div>
+
+    </div >
   )
 }
 

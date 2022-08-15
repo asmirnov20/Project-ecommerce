@@ -20,10 +20,9 @@ export default async function handler(req, res) {
 
                 line_items: req.body.map(item => {
                     const img = item.image[0].asset._ref;
-                    console.log(img);
                     // b2tk4g0e  - id проекта
                     // так как все мои файлы в формате 'webp'
-                    const newImage = img.replace('image-', 'https://cdn.sanity.io/images/b2tk4g0e/production').replace('-webp', '.webp')
+                    const newImage = img.replace('image-', 'https://cdn.sanity.io/images/b2tk4g0e/production/').replace('-webp', '.webp')
                     console.log(newImage)
                     return {
                         price_data: {
