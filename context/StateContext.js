@@ -11,6 +11,34 @@ export const StateContext = ({ children }) => {
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [qty, setQty] = useState(1)
 
+    // local storage 
+    useEffect(() => {
+        const data = localStorage.getItem('cartItems')
+        console.log(data)
+        if (data) {
+            setCartItems(JSON.parse(data))
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }, [cartItems])
+
+    // сохранение цены и количества в local storage
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            const storageQuant = [...cartItems]
+            const quant = []
+            storageQuant.forEach(item => quant.push(item.quantity))
+            setTotalQuantities(quant.reduce((prev, curr) => prev + curr))
+
+            const storagePrice = [...cartItems]
+            const totPrice = []
+            storagePrice.forEach(item => totPrice.push(item.price * item.quantity))
+            setTotalPrice(totPrice.reduce((prev, curr) => prev + curr))
+        }
+    }, [cartItems])
+
     const onAdd = (product, quantity) => {
         const isProductInCart = cartItems.find(item => product._id === item._id)
 
@@ -77,6 +105,8 @@ export const StateContext = ({ children }) => {
         setTotalPrice(prevTotalPrice => prevTotalPrice - foundProduct.price * foundProduct.quantity)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity)
         setCartItems(newCartItems)
+
+        localStorage.removeItem('cartItems', product)
     }
 
     const increaseQty = () => {
@@ -106,7 +136,8 @@ export const StateContext = ({ children }) => {
                 onRemove,
                 setTotalPrice,
                 setTotalQuantities,
-                setCartItems
+                setCartItems,
+                setQty
             }}
         >
             {children}

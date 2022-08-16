@@ -1,19 +1,23 @@
 import { client, urlFor } from '../../lib/client'
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import Product from '../../components/Product/Product'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import s from './[slug].module.css'
 import { useStateContext } from '../../context/StateContext'
 
 const ProductDetails = ({ products, product }) => {
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
-    const { qty, increaseQty, decreaseQty, onAdd, setShowCart } = useStateContext()
+    const { qty, increaseQty, decreaseQty, onAdd, setShowCart,setQty } = useStateContext()
 
     const handleBuyNow = () => {
         onAdd(product, qty)
         setShowCart(true)
     }
+
+    useEffect(() => {
+        setQty(1)
+    }, [product])
 
     return (
         <div>
