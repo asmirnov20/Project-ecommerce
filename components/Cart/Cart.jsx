@@ -8,7 +8,6 @@ import s from './Cart.module.css'
 import getStripe from '../../lib/getStripe'
 
 const Cart = () => {
-  const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext()
 
   async function handleCheckout() {
@@ -33,10 +32,24 @@ const Cart = () => {
     console.log(data);
   }
 
+  const wrapperRef = useRef()
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (wrapperRef.current == e.target) {
+        setShowCart(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  })
 
   return (
-    <div className={s.wrapper}>
-      <div className={s.mainContainer} ref={cartRef}>
+    <div className={s.wrapper} ref={wrapperRef}>
+      <div className={s.mainContainer}>
         <button
           type='button'
           className={s.closeBtn}
@@ -80,13 +93,13 @@ const Cart = () => {
             <button
               type='button'
               disabled={cartItems.length === 0 ? true : false}
-              className={cartItems.length === 0 ? `${s.disabled} ${s.button}`: `${s.button} `}
-            onClick={handleCheckout}>
-            Pay with Stripe
-          </button>
+              className={cartItems.length === 0 ? `${s.disabled} ${s.button}` : `${s.button} `}
+              onClick={handleCheckout}>
+              Pay with Stripe
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
     </div >
   )

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { urlFor } from '../../lib/client'
 import s from './HeroBanner.module.css'
+import Countdown from './CountDown'
 
 const HeroBanner = ({ heroBanner }) => {
   return (
@@ -16,6 +17,7 @@ const HeroBanner = ({ heroBanner }) => {
           </Link>
         </div>
       </div>
+      <Countdown />
     </div>
   )
 }
