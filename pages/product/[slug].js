@@ -4,11 +4,14 @@ import Product from '../../components/Product/Product'
 import { useState, useEffect } from 'react'
 import s from './[slug].module.css'
 import { useStateContext } from '../../context/StateContext'
+import { motion } from 'framer-motion'
+import { productFadeInUp, stagger, fadeInRight } from '../../animations/animations'
+import { useRouter } from 'next/router'
 
 const ProductDetails = ({ products, product }) => {
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
-    const { qty, increaseQty, decreaseQty, onAdd, setShowCart,setQty } = useStateContext()
+    const { qty, increaseQty, decreaseQty, onAdd, setShowCart, setQty } = useStateContext()
 
     const handleBuyNow = () => {
         onAdd(product, qty)
@@ -19,12 +22,13 @@ const ProductDetails = ({ products, product }) => {
         setQty(1)
     }, [product])
 
+    const router = useRouter()
     return (
-        <div>
+        <motion.div exit={{ opacity: 0 }} initial='initial' animate='animate' key={router.query.slug}>
             <div className={s.container}>
-                <div>
+                <motion.div variants={fadeInRight}>
                     <div>
-                        <img
+                        <motion.img
                             src={urlFor(image && image[index])}
                             className={s.detailImage}
                             alt='product'
@@ -32,7 +36,7 @@ const ProductDetails = ({ products, product }) => {
                     </div>
                     <div className={s.imagesContainer}>
                         {image?.map((item, ind) => (
-                            <img
+                            <motion.img
                                 key={ind}
                                 src={urlFor(item)}
                                 className={ind === index
@@ -41,14 +45,18 @@ const ProductDetails = ({ products, product }) => {
                                 onMouseEnter={() => setIndex(ind)
                                 }
                                 alt='product-image'
+                                whileHover={{
+                                    scale: 1.1, backgroundColor: '#f02d34', transition: { duration: 0.15 }
+                                }}
                             />
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
-                <div className={s.description}>
-                    <h1>{name}</h1>
-                    <div className={s.reviews}>
+
+                <motion.div variants={stagger} className={s.description} >
+                    <motion.h1 variants={productFadeInUp} >{name}</motion.h1>
+                    <motion.div variants={productFadeInUp} className={s.reviews}>
                         <div>
                             <AiFillStar />
                             <AiFillStar />
@@ -57,28 +65,29 @@ const ProductDetails = ({ products, product }) => {
                             <AiOutlineStar />
                         </div>
                         <p>(20)</p>
-                    </div>
-                    <h4>Details:</h4>
-                    <p>{details}</p>
-                    <p className={s.oldPrice}>$15.99</p>
-                    <p className={s.price}>${price}</p>
+                    </motion.div>
+                    <motion.h4 variants={productFadeInUp}>Details:</motion.h4>
+                    <motion.p variants={productFadeInUp}>{details}</motion.p>
+                    <motion.p variants={productFadeInUp} className={s.oldPrice}>$15.99</motion.p>
+                    <motion.p variants={productFadeInUp} className={s.price}>${price}</motion.p>
 
-                    <div className={s.quantity}>
+                    <motion.div variants={productFadeInUp} className={s.quantity}>
                         <h3>Quantity:</h3>
                         <p className={s.quantityDesc}>
                             <span className={s.minus} onClick={decreaseQty}><AiOutlineMinus /></span>
                             <span className={s.num}>{qty}</span>
                             <span className={s.plus} onClick={increaseQty}><AiOutlinePlus /></span>
                         </p>
-                    </div>
-                    <div className={s.buttons}>
+                    </motion.div>
+                    <motion.div variants={productFadeInUp} className={s.buttons}>
                         <button type='button' className={s.addToCart} onClick={() => onAdd(product, qty)}>
                             Add to Cart</button>
                         <button type='button' className={s.buyNow} onClick={(handleBuyNow)}>
                             Buy Now</button>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
+
 
             <div className={s.maylikeWrapper}>
                 <h2>You may also like</h2>
@@ -90,7 +99,7 @@ const ProductDetails = ({ products, product }) => {
                     </div>
                 </div>
             </div>
-        </div >
+        </motion.div >
     )
 }
 

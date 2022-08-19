@@ -4,8 +4,21 @@ import logoImage from '../../../../assets/my_logo.png'
 import Cart from "../Cart/Cart"
 import s from './Navbar.module.css'
 import { useStateContext } from "../../context/StateContext"
+import { AnimatePresence, motion } from 'framer-motion'
+import { cartAnimate } from "../../animations/animations"
 
 const Navbar = () => {
+  const menuVariants = {
+    opened: {
+      x: 0,
+      opacity: 1
+    },
+    closed: {
+      x: '100%',
+      opacity: 0
+    },
+  }
+
   const { showCart, setShowCart, totalQuantities } = useStateContext()
   return (
     <div className={s.container}>
@@ -19,8 +32,10 @@ const Navbar = () => {
         <AiOutlineShopping />
         <span className={s.quantity}>{totalQuantities}</span>
       </button>
-      
-      {showCart && <Cart />}
+
+      <AnimatePresence>
+        {showCart && <Cart />}
+      </AnimatePresence>
     </div>
   )
 }

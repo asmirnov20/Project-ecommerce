@@ -12,7 +12,7 @@
     width: 400px;
     height: 400px;
     cursor: pointer;
-    transition: .3s ease-in-out;
+    transition: .6s ease-in-out;
 }
 .detailImage:hover {
     background-color: #f02d34;
@@ -30,9 +30,6 @@
     width: 70px;
     height: 70px;
     cursor: pointer;
-}
-.selectedImage {
-    background-color: #f02d34;
 }
 
 .description h4 {

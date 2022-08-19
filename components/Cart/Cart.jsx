@@ -6,9 +6,13 @@ import { useStateContext } from '../../context/StateContext'
 import CartItem from './CartItem/CartItem'
 import s from './Cart.module.css'
 import getStripe from '../../lib/getStripe'
+import { motion } from 'framer-motion'
+import { cartAnimate, emptyAnimate } from '../../animations/animations'
+
 
 const Cart = () => {
-  const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext()
+  const { totalPrice, totalQuantities, cartItems, setShowCart, showCart } = useStateContext()
+  const wrapperRef = useRef()
 
   async function handleCheckout() {
     // получаем инстанс страйп промиса
@@ -32,7 +36,7 @@ const Cart = () => {
     console.log(data);
   }
 
-  const wrapperRef = useRef()
+
   useEffect(() => {
     const handleClickOutside = e => {
       if (wrapperRef.current == e.target) {
@@ -48,8 +52,16 @@ const Cart = () => {
   })
 
   return (
-    <div className={s.wrapper} ref={wrapperRef}>
-      <div className={s.mainContainer}>
+    <motion.div className={s.wrapper} ref={wrapperRef} initial='initial' animate='animate'>
+      <motion.div className={s.mainContainer}
+        variants={cartAnimate}
+        exit={{
+          x: '110%',
+          transition: {
+            duration: 0.2
+          }
+        }}
+      >
         <button
           type='button'
           className={s.closeBtn}
@@ -62,19 +74,22 @@ const Cart = () => {
 
         {/* Если в корзине нет продуктов */}
         {cartItems.length < 1 && (
-          <div className={s.empty}>
-            <AiOutlineShopping size={150} />
-            <h3>Your shopping bag is empty</h3>
-            <Link href='/'>
-              <button
-                type='button'
-                onClick={() => setShowCart(false)}
-                className={s.button}
-              >
-                Continue Shopping
-              </button>
-            </Link>
-          </div>
+          <motion.div className={s.empty} initial='initial' animate='animate'>
+            <motion.div variants={emptyAnimate}>
+              <AiOutlineShopping size={150} />
+              <h3>Your shopping bag is empty</h3>
+              <Link href='/'>
+                <button
+                  type='button'
+                  onClick={() => setShowCart(false)}
+                  className={s.button}
+                >
+                  Continue Shopping
+                </button>
+              </Link>
+            </motion.div>
+          </motion.div>
+
         )}
 
         {/* если есть */}
@@ -99,9 +114,9 @@ const Cart = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-    </div >
+    </motion.div >
   )
 }
 
