@@ -3,7 +3,7 @@
     background: #ffd700;
     border-radius: 15px;
     position: relative;
-    height: 500px;
+    height: 100vh;
     line-height: 0.9;
     width: 100%;
 }
@@ -28,14 +28,8 @@
     font-weight: 500;
     cursor: pointer;
     z-index: 10000 !important;
-    transition: all 0.35s ease;
     display: inline-block;
     max-width: 170px;
-}
-
-.container button:hover {
-    background-color: rgb(227, 233, 226);
-    color: #f02d34;
 }
 
 .container h3 {

@@ -1,27 +1,35 @@
 import Link from "next/link"
 import { urlFor } from "../../lib/client"
 import s from './FooterBanner.module.css'
+import { motion } from 'framer-motion'
+import { fadeInLeft, fadeInRight, fadeInUp, footerImageAnimate, mainStagger } from "../../animations/animations"
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saletime, smallText, midText, desc, product, buttonText, image } }) => {
   return (
     <div className={s.container}>
-      <div className={s.desc}>
-        <div className={s.left}>
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saletime}</p>
-        </div>
-        <div className={s.right}>
-          <p>{smallText}</p>
-          <p>{midText}</p>
-          <p>{desc}</p>
+      <div className={s.desc} >
+        <motion.div className={s.left} variants={mainStagger}>
+          <motion.p variants={fadeInRight}>{discount}</motion.p>
+          <motion.h3 variants={fadeInRight}>{largeText1}</motion.h3>
+          <motion.h3 variants={fadeInRight}>{largeText2}</motion.h3>
+          <motion.p variants={fadeInRight}>{saletime}</motion.p>
+        </motion.div>
+        <motion.div className={s.right} variants={mainStagger}>
+          <motion.p variants={fadeInLeft}>{smallText}</motion.p>
+          <motion.p variants={fadeInLeft}>{midText}</motion.p>
+          <motion.p variants={fadeInLeft}>{desc}</motion.p>
           <Link href={`/product/${product}`}>
-            <button type="button">{buttonText}</button>
+            <motion.button type="button"
+              variants={fadeInLeft}
+              whileHover={{
+                scale: 1.15, textShadow: '0px 0px 1px #f02d34', boxShadow: '0px 0px 10px rgb(0,0,0)'
+              }}
+              whileTap={{ scale: 0.8 }}
+            >{buttonText}</motion.button>
           </Link>
-        </div>
+        </motion.div>
 
-        <img src={urlFor(image)} className={s.image} />
+        <motion.img src={urlFor(image)} className={s.image} variants={footerImageAnimate} />
       </div>
     </div>
   )

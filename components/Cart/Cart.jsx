@@ -7,7 +7,7 @@ import CartItem from './CartItem/CartItem'
 import s from './Cart.module.css'
 import getStripe from '../../lib/getStripe'
 import { motion } from 'framer-motion'
-import { cartAnimate, emptyAnimate } from '../../animations/animations'
+import { cartAnimate, emptyAnimate, wrapperAnimate } from '../../animations/animations'
 
 
 const Cart = () => {
@@ -52,15 +52,9 @@ const Cart = () => {
   })
 
   return (
-    <motion.div className={s.wrapper} ref={wrapperRef} initial='initial' animate='animate'>
+    <motion.div className={s.wrapper} ref={wrapperRef} variants={wrapperAnimate} initial='initial' animate='animate' exit='exit'>
       <motion.div className={s.mainContainer}
         variants={cartAnimate}
-        exit={{
-          x: '110%',
-          transition: {
-            duration: 0.2
-          }
-        }}
       >
         <button
           type='button'
@@ -74,8 +68,8 @@ const Cart = () => {
 
         {/* Если в корзине нет продуктов */}
         {cartItems.length < 1 && (
-          <motion.div className={s.empty} initial='initial' animate='animate'>
-            <motion.div variants={emptyAnimate}>
+          <motion.div className={s.empty} variants={emptyAnimate}>
+            <motion.div >
               <AiOutlineShopping size={150} />
               <h3>Your shopping bag is empty</h3>
               <Link href='/'>

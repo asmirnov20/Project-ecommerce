@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import s from './[slug].module.css'
 import { useStateContext } from '../../context/StateContext'
 import { motion } from 'framer-motion'
-import { productFadeInUp, stagger, fadeInRight } from '../../animations/animations'
+import { productFadeInUp, stagger, fadeInRight, fadeInUp } from '../../animations/animations'
 import { useRouter } from 'next/router'
 
 const ProductDetails = ({ products, product }) => {
@@ -89,16 +89,16 @@ const ProductDetails = ({ products, product }) => {
             </div>
 
 
-            <div className={s.maylikeWrapper}>
-                <h2>You may also like</h2>
-                <div className={s.marquee}>
-                    <div className={`${s.maylikeContainer} ${s.track}`}>
+            <motion.div className={s.maylikeWrapper} variants={productFadeInUp} whileInView='animate'>
+                <motion.h2>You may also like</motion.h2>
+                <motion.div className={s.marquee} variants={productFadeInUp} initial='initial' whileInView='animate'>
+                    <motion.div className={`${s.maylikeContainer} ${s.track}`}>
                         {products.map(item => (
                             <Product key={item._id} product={item} />
                         ))}
-                    </div>
-                </div>
-            </div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         </motion.div >
     )
 }

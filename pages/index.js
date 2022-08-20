@@ -1,29 +1,54 @@
 import React from 'react'
 import { client } from '../lib/client'
-import { Product, FooterBanner, HeroBanner, } from '../components'
+import { Product, FooterBanner, HeroBanner } from '../components'
 import { motion } from 'framer-motion'
-import { stagger, fadeInUp } from '../animations/animations'
+import { stagger, fadeInUp, productsMainAnimate } from '../animations/animations'
+
 
 const Home = ({ products, bannerData }) => {
-
+  console.log(products)
   return (
     <motion.div
       initial='initial'
-      animate='animate'
+      whileInView='animate'
       exit={{ opacity: 0 }}
     >
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+
       <motion.div variants={stagger}>
-        <motion.div variants={fadeInUp} className='products-heading'>
+        <motion.div
+          variants={fadeInUp}
+          initial='initial'
+          whileInView='animate'
+          viewport={{ amount: 0.2, once: true }}
+          className='products-heading'
+        >
           <h2>Best Selling Products</h2>
           <p>Speakers of any variations</p>
         </motion.div>
-        <motion.div variants={fadeInUp} className='products-container'>
-          {products?.map(product => <Product key={product._id} product={product} />)}
+        <motion.div
+          variants={productsMainAnimate}
+          initial='initial'
+          whileInView='animate'
+          viewport={{ once: true }}
+          className='products-container'
+        >
+          {products?.map(product =>
+            <Product key={product._id} product={product}
+            />)}
+
         </motion.div>
       </motion.div>
-      <FooterBanner footerBanner={bannerData && bannerData[0]} />
-    </motion.div>
+
+      <motion.div variants={fadeInUp}
+        initial='initial'
+        whileInView='animate'
+        viewport={{ once: true }}
+      >
+        <FooterBanner footerBanner={bannerData && bannerData[0]} />
+      </motion.div>
+
+    </motion.div >
   )
 }
 

@@ -5,11 +5,10 @@ import { motion } from 'framer-motion'
 
 const Product = ({ product: { image, name, slug, price } }) => {
   return (
-    <div>
+    <motion.div>
       <Link href={`/product/${slug.current}`} >
         <motion.div className={s.card} whileHover={{ scale: 1.1, transition: { duration: 0.4 } }} whileTap={{ scale: 0.95 }}>
           <img
-            layoutId='product-id'
             src={urlFor(image && image[0])}
             width={250}
             height={250}
@@ -20,9 +19,8 @@ const Product = ({ product: { image, name, slug, price } }) => {
             <p className={s.price}>${price}</p>
           </div>
         </motion.div>
-
       </Link>
-    </div>
+    </motion.div>
   )
 }
 
