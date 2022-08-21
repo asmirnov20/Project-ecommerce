@@ -21,8 +21,7 @@ export const productsMainAnimate = {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 0.5,
-            delay: 0.1,
+            duration: 0.7,
             ease: [0.6, -0.05, 0.01, 0.99]
         }
     }
@@ -141,7 +140,7 @@ export const cartAnimate = {
     exit: {
         x: '110%',
         transition: {
-            duration: 0.17
+            duration: 0.1
         }
     }
 }

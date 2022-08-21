@@ -3,7 +3,7 @@ import s from './Countdown.module.css'
 
 const Countdown = () => {
     const [timerDays, setTimerDays] = useState('00')
-    const [timerHours, setTimerours] = useState('00')
+    const [timerHours, setTimerHours] = useState('00')
     const [timerMinutes, setTimerMinutes] = useState('00')
     const [timerSeconds, setTimerSeconds] = useState('00')
 
@@ -33,7 +33,7 @@ const Countdown = () => {
                 clearInterval(interval.current)
             } else {
                 setTimerDays(formatDate(days))
-                setTimerours(formatDate(hours))
+                setTimerHours(formatDate(hours))
                 setTimerMinutes(formatDate(minutes))
                 setTimerSeconds(formatDate(seconds))
             }
@@ -46,7 +46,7 @@ const Countdown = () => {
         return () => {
             clearInterval(someref)
         }
-    })
+    }, [setTimerDays], [setTimerMinutes], [setTimerSeconds], [setTimerHours])
 
     return (
         <div className={s.wrapper}>

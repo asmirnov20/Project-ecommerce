@@ -3,6 +3,7 @@ import { urlFor } from "../../lib/client"
 import s from './FooterBanner.module.css'
 import { motion } from 'framer-motion'
 import { fadeInLeft, fadeInRight, fadeInUp, footerImageAnimate, mainStagger } from "../../animations/animations"
+import Countdown from "./Countdown"
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saletime, smallText, midText, desc, product, buttonText, image } }) => {
   return (
@@ -14,10 +15,11 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleti
           <motion.h3 variants={fadeInRight}>{largeText2}</motion.h3>
           <motion.p variants={fadeInRight}>{saletime}</motion.p>
         </motion.div>
+
+        <Countdown />
+
         <motion.div className={s.right} variants={mainStagger}>
-          <motion.p variants={fadeInLeft}>{smallText}</motion.p>
-          <motion.p variants={fadeInLeft}>{midText}</motion.p>
-          <motion.p variants={fadeInLeft}>{desc}</motion.p>
+          <motion.img src={urlFor(image)} className={s.image} variants={footerImageAnimate} />
           <Link href={`/product/${product}`}>
             <motion.button type="button"
               variants={fadeInLeft}
@@ -29,7 +31,6 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleti
           </Link>
         </motion.div>
 
-        <motion.img src={urlFor(image)} className={s.image} variants={footerImageAnimate} />
       </div>
     </div>
   )
