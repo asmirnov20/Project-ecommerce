@@ -1,11 +1,10 @@
 import Link from "next/link"
 import { AiOutlineShopping } from 'react-icons/ai'
-import logoImage from '../../../../assets/my_logo.png'
+import logoImage from '../../public/my_logo.png'
 import Cart from "../Cart/Cart"
 import s from './Navbar.module.css'
 import { useStateContext } from "../../context/StateContext"
 import { AnimatePresence, motion } from 'framer-motion'
-import { cartAnimate } from "../../animations/animations"
 
 const Navbar = () => {
   const menuVariants = {
