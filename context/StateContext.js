@@ -10,11 +10,12 @@ export const StateContext = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalQuantities, setTotalQuantities] = useState(0)
     const [qty, setQty] = useState(1)
+    const [oldPrice, setOldPrice] = useState(0)
 
     // local storage 
     useEffect(() => {
         const data = localStorage.getItem('cartItems')
-        console.log(data)
+
         if (data) {
             setCartItems(JSON.parse(data))
         }
@@ -120,6 +121,11 @@ export const StateContext = ({ children }) => {
         })
     }
 
+    const getOldPrice = (currPrice) => {
+        const prevPrice = currPrice * (1 + Math.random());
+        setOldPrice(prevPrice.toFixed(2))
+    }
+
     return (
         <Context.Provider
             value={{
@@ -137,7 +143,9 @@ export const StateContext = ({ children }) => {
                 setTotalPrice,
                 setTotalQuantities,
                 setCartItems,
-                setQty
+                setQty,
+                getOldPrice,
+                oldPrice,
             }}
         >
             {children}

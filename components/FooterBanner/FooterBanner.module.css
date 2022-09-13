@@ -1,4 +1,5 @@
 .container {
+    max-width: 1200px;
     padding: 60px 40px;
     background-color: #f02d34;
     border-radius: 15px;
@@ -45,8 +46,8 @@
     position: absolute;
     top: -45%;
     right: 0%;
-    width: 280px;
-    height: 300px;
+    width: 250px;
+    height: 290px;
 }
 
  .right {
@@ -67,10 +68,6 @@
     padding: 5px 0
 }
 
-/* .company-desc {
-    font-size: 14px;
-    font-weight: 300;
-} */
 
 @media screen and (max-width:1020px) {
     .container {
@@ -114,22 +111,19 @@
     .right p {
         font-size: 18px;
     }
-
-    /* .company-desc {
-        font-size: 14px;
-        font-weight: 300;
-    } */
 }
+
+
 @media screen and (max-width: 820px) {
     .container{
         height:320px
     }
     .image{
-        width: 170px;
-        right: -3%;
-        top: -40%;
+        width:140px;
+        right: 3%;
+        top: 0%;
         height: 220px
-    } 
+}
     .left{
         align-self: flex-end;
         padding-top: 70px;
@@ -148,7 +142,7 @@
   .right{
     margin-top: 150px;
   }
-.right h3 {
+  .right h3 {
     font-size: 45px;
   }
 
@@ -160,32 +154,79 @@
   }
 
   .desc button {
-      margin-right: 20px;
+      margin-right: 300px;
       padding: 7px 10px;
       font-size: 1.2rem;
   }
 }
 
-@media screen and (max-width:545px) {
-     .desc button{
-      font-size: 15px;
+@media screen and (max-width:690px){
+    .container {
+        height: 300px;
+        padding: 0;
+        overflow: hidden;
+    }
+    .desc {
+        align-items: center;
+        justify-content: space-between;
+    }
+    .left {
+        padding-top: 0;
+        align-self: center;
+       flex:1;
+    }
+    .right {
+        margin-top:0;
+        padding-left:100px;
+        align-self: flex-end;
+         flex:1;
     }
     .image {
-        width: 100px;
-        right: -5%;
-        top: -25%;
-        height: 180px
+        position:relative;
+        width:180px;
+        height:230px;
+    }
+    .desc {
+        padding:0 50px;
+    }
+   .desc button {
+        margin-right:50px;
+    }
+    .left h3 {
+        font-size: 4rem;
+     }
+
+  .left p {
+    font-size: 2rem;
   }
-  
-  .left h3 {
-      font-size: 30px;
+}
+
+@media screen and (max-width:590px) {
+    .desc {
+        padding:0 20px;
     }
-  
-    .left p {
-      font-size: 20px;
+    .image {
+        width:150px;
+        height:200px;
     }
-  
-  .right p {
-      font-size: 13px;
+    .left h3 {
+        font-size: 3rem;
+     }
+
+  .left p {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width:500px) {
+     .desc {
+        padding: 30px 0;
+    }
+    .left {
+        max-width:130px;
+    }
+    .image {
+        width:130px;
+        height:180px;
     }
 }

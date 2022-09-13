@@ -21,7 +21,7 @@ export const productsMainAnimate = {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 0.7,
+            duration: 0.5,
             ease: [0.6, -0.05, 0.01, 0.99]
         }
     }
@@ -66,7 +66,21 @@ export const productFadeInUp = {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 1,
+            duration: 0.7,
+            ease: [0.6, -0.05, 0.01, 0.99],
+        }
+    }
+}
+export const maylikeFadeInUp = {
+    initial: {
+        y: 100,
+        opacity: 0
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.6,
             ease: [0.6, -0.05, 0.01, 0.99],
         }
     }
@@ -128,9 +142,11 @@ export const wrapperAnimate = {
 
 export const cartAnimate = {
     initial: {
+        opacity: 0,
         x: '110%',
     },
     animate: {
+        opacity: 1,
         x: 0,
         transition: {
             duration: 0.4,
@@ -138,9 +154,10 @@ export const cartAnimate = {
         }
     },
     exit: {
+        opacity: 0,
         x: '110%',
         transition: {
-            duration: 0.1
+            duration: 0.2
         }
     }
 }

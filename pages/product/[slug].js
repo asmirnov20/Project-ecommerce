@@ -5,13 +5,13 @@ import { useState, useEffect } from 'react'
 import s from './[slug].module.css'
 import { useStateContext } from '../../context/StateContext'
 import { motion } from 'framer-motion'
-import { productFadeInUp, stagger, fadeInRight, fadeInUp } from '../../animations/animations'
+import { productFadeInUp, stagger, fadeInRight, maylikeFadeInUp } from '../../animations/animations'
 import { useRouter } from 'next/router'
 
 const ProductDetails = ({ products, product }) => {
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
-    const { qty, increaseQty, decreaseQty, onAdd, setShowCart, setQty } = useStateContext()
+    const { qty, increaseQty, decreaseQty, onAdd, setShowCart, setQty, getOldPrice, oldPrice } = useStateContext()
 
     const handleBuyNow = () => {
         onAdd(product, qty)
@@ -20,6 +20,7 @@ const ProductDetails = ({ products, product }) => {
 
     useEffect(() => {
         setQty(1)
+        getOldPrice(price)
     }, [product])
 
     const router = useRouter()
@@ -68,7 +69,7 @@ const ProductDetails = ({ products, product }) => {
                     </motion.div>
                     <motion.h4 variants={productFadeInUp}>Details:</motion.h4>
                     <motion.p variants={productFadeInUp}>{details}</motion.p>
-                    <motion.p variants={productFadeInUp} className={s.oldPrice}>$15.99</motion.p>
+                    <motion.p variants={productFadeInUp} className={s.oldPrice}>{oldPrice}</motion.p>
                     <motion.p variants={productFadeInUp} className={s.price}>${price}</motion.p>
 
                     <motion.div variants={productFadeInUp} className={s.quantity}>
@@ -89,16 +90,16 @@ const ProductDetails = ({ products, product }) => {
             </div>
 
 
-            <motion.div className={s.maylikeWrapper} variants={productFadeInUp} whileInView='animate'>
-                <motion.h2>You may also like</motion.h2>
-                <motion.div className={s.marquee} variants={productFadeInUp} initial='initial' whileInView='animate'>
+            <div className={s.maylikeWrapper}>
+                <h2>You may also like</h2>
+                <motion.div className={s.marquee} variants={maylikeFadeInUp} initial='initial' whileInView='animate'>
                     <motion.div className={`${s.maylikeContainer} ${s.track}`}>
                         {products.map(item => (
                             <Product key={item._id} product={item} />
                         ))}
                     </motion.div>
                 </motion.div>
-            </motion.div>
+            </div>
         </motion.div >
     )
 }

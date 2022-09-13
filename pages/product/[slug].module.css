@@ -1,7 +1,7 @@
 .container {
     display: flex;
     gap: 40px;
-    margin: 40px;
+    margin: 20px;
     margin-top: 60px;
     color: #324d67;
 }
@@ -31,9 +31,13 @@
     height: 70px;
     cursor: pointer;
 }
+.description {
+        padding:0 10px;
+}
 
 .description h4 {
     margin-top: 10px;
+
 }
 
 .description p {
@@ -71,7 +75,7 @@
 }
 .quantityDesc {
     border: 1px solid gray;
-    padding: 6px;
+    padding: 6px 0px;
 }
 
 .quantityDesc span {
@@ -134,12 +138,12 @@
 }
 
 .maylikeWrapper {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .maylikeWrapper h2 {
     text-align: center;
-    margin: 50px;
+    margin-top: 100px;
     color: #324d67;
     font-size: 28px;
 }
@@ -176,13 +180,25 @@
         transform: translateX(-50%);
     }
 }
+@media screen and (max-width:957px){
+    .container{
+        margin:10px;
+        gap:20px
+    }
+    .buttons{
+        gap:20px;
+        padding:10px
+    }
+}
+
 @media screen and (max-width:820px) {
     .container {
         flex-wrap: wrap;
         margin: 20px;
+        justify-content:center;
     }
     .quantityDesc {
-        padding: 0;
+        padding: 3px 0;
     }
     .addToCart {
         width: 150px;
@@ -197,4 +213,10 @@
         font-size: 22px;
         padding:2px 12px;
     }
+}
+
+@media screen and (max-width:445px) {
+    .detailImage{
+        width:350px;
+        }
 }

@@ -9,7 +9,7 @@
     justify-content: center;
     position: absolute;
     top: -30%;
-    right: 35%;
+    right: 30%;
 }
 
 .name {
@@ -51,7 +51,7 @@
 @media screen and (max-width:1120px) {
     .wrapper{
         top: -20%;
-        right: 30%;
+        right: 26%;
     }
     .name{
         font-size: 3rem;
@@ -83,29 +83,9 @@ font-size: 2.5rem;
   }
 }
 
-@media screen and (max-width:545px) {
+
+@media screen and (max-width:690px){
     .wrapper{
-        right:20%;
-    }
-    .name{
-        padding-top: 20px;
-        font-size: 25px;
-    }
-.format {
-    width: 4.2rem;
-    height: 4.2rem;
-}
-    .deadline h4 {
-        margin-bottom: 25px;
-        font-size: 1rem;
-    }
-    .format div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .format span {
-        margin-top: -20px;
-        font-size: 0.7rem;
-    }
+        display:none;
+  }
 }

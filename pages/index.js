@@ -2,11 +2,11 @@ import React from 'react'
 import { client } from '../lib/client'
 import { Product, FooterBanner, HeroBanner } from '../components'
 import { motion } from 'framer-motion'
-import { stagger, fadeInUp, productsMainAnimate } from '../animations/animations'
+import {fadeInUp, productsMainAnimate } from '../animations/animations'
 
 
 const Home = ({ products, bannerData }) => {
-  console.log(products)
+  
   return (
     <motion.div
       initial='initial'
@@ -15,12 +15,12 @@ const Home = ({ products, bannerData }) => {
     >
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
-      <motion.div variants={stagger}>
+      <motion.div variants={fadeInUp}>
         <motion.div
           variants={fadeInUp}
           initial='initial'
           whileInView='animate'
-          viewport={{ amount: 0.2, once: true }}
+          viewport={{ once: true }}
           className='products-heading'
         >
           <h2>Best Selling Products</h2>
@@ -40,10 +40,8 @@ const Home = ({ products, bannerData }) => {
         </motion.div>
       </motion.div>
 
-      <motion.div variants={fadeInUp}
-        initial='initial'
-        whileInView='animate'
-        viewport={{ once: true }}
+      <motion.div
+        className='footer-wrapper'
       >
         <FooterBanner footerBanner={bannerData && bannerData[0]} />
       </motion.div>

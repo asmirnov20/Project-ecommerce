@@ -14,7 +14,7 @@ const HeroBanner = ({ heroBanner }) => {
           <motion.h1 variants={fadeInRight}>{heroBanner.largeText1}</motion.h1>
           <Link href={`/product/${heroBanner.product}`}>
             <motion.button type='button' variants={fadeInRight}
-              whileHover={{ scale: 1.15, textShadow: '0px 0px 3px rgb(255,255,255)', boxShadow: '0px 0px 8px rgb(0,0,0)' }}
+              whileHover={{ scale: 1.05, textShadow: '0px 0px 3px rgb(255,255,255)', boxShadow: '0px 0px 8px rgb(0,0,0)' }}
               whileTap={{ scale: 0.8 }}
             >{heroBanner.buttonText}</motion.button>
           </Link>

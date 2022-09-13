@@ -7,7 +7,10 @@ import Countdown from "./Countdown"
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saletime, smallText, midText, desc, product, buttonText, image } }) => {
   return (
-    <div className={s.container}>
+    <motion.div className={s.container} variants={fadeInUp}
+      initial='initial'
+      whileInView='animate'
+      viewport={{ once: true }}>
       <div className={s.desc} >
         <motion.div className={s.left} variants={mainStagger}>
           <motion.p variants={fadeInRight}>{discount}</motion.p>
@@ -24,15 +27,19 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleti
             <motion.button type="button"
               variants={fadeInLeft}
               whileHover={{
-                scale: 1.15, textShadow: '0px 0px 1px #f02d34', boxShadow: '0px 0px 10px rgb(0,0,0)'
+                scale: 1.1, textShadow: '0px 0px 1px #f02d34', boxShadow: '0px 0px 10px rgb(0,0,0)'
               }}
-              whileTap={{ scale: 0.8 }}
-            >{buttonText}</motion.button>
+              whileTap={{
+                scale: 0.9
+              }}
+            >
+              {buttonText}
+            </motion.button>
           </Link>
         </motion.div>
 
       </div>
-    </div>
+    </motion.div>
   )
 }
 

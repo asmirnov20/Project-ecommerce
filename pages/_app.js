@@ -2,20 +2,20 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import { StateContext } from '../context/StateContext'
 import { Toaster } from 'react-hot-toast'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { AnimatePresence, LayoutGroup } from 'framer-motion'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AnimateSharedLayout>
+    <LayoutGroup>
       <StateContext>
         <Layout>
           <Toaster />
           <AnimatePresence mode='wait'>
-            <Component {...pageProps}  />
+            <Component {...pageProps} />
           </AnimatePresence>
         </Layout>
       </StateContext>
-    </AnimateSharedLayout>
+    </LayoutGroup>
   )
 }
 
