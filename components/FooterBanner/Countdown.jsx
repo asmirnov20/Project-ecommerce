@@ -10,7 +10,7 @@ const Countdown = () => {
     let interval = useRef()
 
     function startTimer() {
-        const futureDate = new Date(2022, 8, 30, 12, 0, 0).getTime()
+        const futureDate = new Date(2022, 9, 30, 12, 0, 0).getTime()
 
         interval = setInterval(() => {
             const today = new Date().getTime()
